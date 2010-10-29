@@ -1,0 +1,33 @@
+<project name="Sample.Project">
+	<triggers>
+		<intervalTrigger />
+	</triggers>
+
+	<sourcecontrol type="svn">
+		<username>username</username>
+		<password>password</password>
+		<trunkUrl>http://url.to.trunk</trunkUrl>      
+	</sourcecontrol>
+	
+	<tasks>
+		<msbuild>
+			<executable>MSBuild.exe</executable>
+			<projectFile>build.xml</projectFile>
+			<targets>BuildTarget</targets>
+			<logger>C:\Program Files (x86)\CruiseControl.NET\server\ThoughtWorks.CruiseControl.MsBuild.dll</logger>
+		</msbuild>
+	</tasks>
+
+	<workingDirectory>C:\Projects\sample-project\</workingDirectory>
+
+	<publishers>
+		<merge>
+			<files>
+				<file>TestResult.xml</file>
+			</files>
+		</merge>
+
+		<modificationHistory />
+		<xmllogger />
+	</publishers>
+</project>
